@@ -42,11 +42,11 @@ class Profile extends Component {
                 this.setState({
                     serverError: true,
                     isLoading: false
-                });        
+                });
             }
-        });        
+        });
     }
-      
+
     componentDidMount() {
         const username = this.props.match.params.username;
         this.loadUserProfile(username);
@@ -55,7 +55,7 @@ class Profile extends Component {
     componentWillReceiveProps(nextProps) {
         if(this.props.match.params.username !== nextProps.match.params.username) {
             this.loadUserProfile(nextProps.match.params.username);
-        }        
+        }
     }
 
     render() {
@@ -77,7 +77,7 @@ class Profile extends Component {
 
         return (
             <div className="profile">
-                { 
+                {
                     this.state.user ? (
                         <div className="user-profile">
                             <div className="user-details">
@@ -94,8 +94,8 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="user-poll-details">    
-                                <Tabs defaultActiveKey="1" 
+                            <div className="user-poll-details">
+                                <Tabs defaultActiveKey="1"
                                     animated={false}
                                     tabBarStyle={tabBarStyle}
                                     size="large"
@@ -103,13 +103,10 @@ class Profile extends Component {
                                     <TabPane tab={`${this.state.user.pollCount} Polls`} key="1">
                                         <PollList username={this.props.match.params.username} type="USER_CREATED_POLLS" />
                                     </TabPane>
-                                    <TabPane tab={`${this.state.user.voteCount} Votes`}  key="2">
-                                        <PollList username={this.props.match.params.username} type="USER_VOTED_POLLS" />
-                                    </TabPane>
                                 </Tabs>
-                            </div>  
-                        </div>  
-                    ): null               
+                            </div>
+                        </div>
+                    ): null
                 }
             </div>
         );
